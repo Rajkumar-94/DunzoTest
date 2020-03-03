@@ -12,6 +12,38 @@
 #XPATH
 ###########################################
 
+# Locators for create task object
+popup_close= "xpath,//i[contains(@class,'sc-3wfzb0-0 sc-13gg6g2-2 cSxoYv')]"
+create_task = "xpath,//button[contains(text(),'Create a Task')]"
+
+# Locators to set pick up address
+pick_up_click= "xpath,//p[contains(text(),'Search pickup location')]"
+partial_address = "xpath,//input[@id='places-autocomplete']"
+area_location = "xpath,//div[@class='sc-bdVaJa sc-bwzfXH eejohd-0 ccewWU']"
+flat_number = "xpath,//input[@name='apartmentAddress']"
+pick_adress_continue_button= "xpath,//button[contains(text(),'Continue')]"
+
+# Locators to set drop address
+drop_click = "xpath,//p[contains(text(),'Search drop location')]"
+partial_drop_address = "//xpath,input[@id='places-autocomplete']"
+drop_area_location = "xpath,//div[@class='sc-bdVaJa sc-bwzfXH eejohd-0 ccewWU']"
+drop_flat_number = "xpath,//input[@name='apartmentAddress']"
+drop_adress_continue_button= "xpath,//button[contains(text(),'Continue')]"
+
+# Locator to fetch the expected shipping amount
+amount_to_pay= "xpath,//div[contains(@class,'sc-bdVaJa sc-bwzfXH bbMAot')]/div/p/font"
+
+
+
+
+
+
+
+
+
+
+
+
 #Locators for the footer object(footer_object.py)
 
 footer_menu = "xpath,//ul[contains(@class,'nav-justified')]/descendant::a[text()='%s']"
