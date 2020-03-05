@@ -29,7 +29,7 @@ class Dunzo_Create_Task_Object():
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def click_on_create_task(self):
-        "Close the popup if present"
+        "Close the popup if present  on the main page"
         if self.check_element_present(self.popup_close):
             self.click_element(self.popup_close)
 
@@ -45,7 +45,7 @@ class Dunzo_Create_Task_Object():
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def check_redirect(self):
-        "Check if redirected to the send package page
+        "Check if redirected to the send package page"
         result_flag = False
 
         if self.redirect_title in self.driver.title:
