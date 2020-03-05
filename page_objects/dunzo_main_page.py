@@ -4,10 +4,12 @@ URL: https://www.dunzo.com/
 The page consists of base page and create task obejects
 """
 from .Base_Page import Base_Page
-from .create_task_object import Create_Task_Object
+from .dunzo_create_task_object import Dunzo_Create_Task_Object
+from .dunzo_options_object import Dunzo_Options_Object
+from .dunzo_partner_object import Dunzo_Partner_Object
 from utils.Wrapit import Wrapit
 
-class Dunzo_Main_Page(Base_Page,Create_Task_Object):
+class Dunzo_Main_Page(Base_Page,Dunzo_Create_Task_Object,Dunzo_Options_Object,Dunzo_Partner_Object):
     "Page Object for the Dunzo's main page"
     
     def start(self):

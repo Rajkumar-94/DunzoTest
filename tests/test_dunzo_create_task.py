@@ -2,7 +2,7 @@
 This is an automated test to verify the following features to create a task for shipping for Dunzo web application
     #Open https://www.dunzo.com/
     #Click on create a task
-    #Verify if redirected to 
+    #Verify if redirected to send package page
     #Set the pick up and drop address 
     #Get the estimated shipping amount for the created task based on the provided address
 """
@@ -36,42 +36,41 @@ def test_dunzo_task(test_obj):
                             negative="Failed to click on create task \nOn url: %s"%test_obj.get_current_url(),
                             level="critical")
 
-        #4. Verify if re-directed to the correct page i.e send package page
+        #3. Verify if re-directed to the correct page i.e send package page
         if result_flag is True:
             result_flag = test_obj.check_redirect()
         test_obj.log_result(result_flag,
                             positive="Redirected correctly to the create task page!!\n",
                             negative="Fail: Redirection to the create task page failed!")
 
-        #3. Get details from conf file
+        #4. Get details from conf file
         pick_address = dunzo_address.partial_pick_address
         house_num1 = dunzo_address.pick_house_num
         drop_address = dunzo_address.partial_drop_address
         house_num2= dunzo_address.drop_house_num
 
-        #3. Set the pick up address
+        #5. Set the pick up address
         result_flag = test_obj.set_pick_up_address(pick_address,house_num1)
         test_obj.log_result(result_flag,
                             positive="Successfully set the pick up address",
                             negative="Failed to set the pick up address:\nOn url: %s\n"%test_obj.get_current_url(),
                             level="critical")
         
-
-        #4. set the drop address
+        #6. set the drop address
         result_flag = test_obj.set_drop_address(drop_address,house_num2)
         test_obj.log_result(result_flag,
                             positive="Successfully set the drop address",
                             negative="Failed to set the drop address \nOn url: %s\n"%test_obj.get_current_url(),
                             level="critical")
 
-        #5. Get the estimated amount for the shipping
+        #7. Get the estimated amount for the shipping
         result_flag = test_obj.get_price()
         test_obj.log_result(result_flag,
                             positive="Successfully fetched the price",
                             negative="Failed to fetch the price \nOn url: %s\n"%test_obj.get_current_url(),
                             level="critical")
 
-        #6. Print out the result
+        #8. Print out the result
         test_obj.write_test_summary()
         expected_pass = test_obj.result_counter
         actual_pass = test_obj.pass_counter        

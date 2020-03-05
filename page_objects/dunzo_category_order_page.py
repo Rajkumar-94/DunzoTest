@@ -1,12 +1,12 @@
 """
 This class models the dunzo category order page.
-The page consists of base page and create task obejects
+The page consists of base page and create task objects
 """
 from .Base_Page import Base_Page
-from .create_task_object import Create_Task_Object
+from .dunzo_create_task_object import Dunzo_Create_Task_Object
 from utils.Wrapit import Wrapit
 
-class Dunzo_Category_Order_Page(Base_Page,Create_Task_Object):
+class Dunzo_Category_Order_Page(Base_Page,Dunzo_Create_Task_Object):
     "Page Object for the Dunzo's main page"
     
     def start(self):
