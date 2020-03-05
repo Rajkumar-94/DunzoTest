@@ -207,7 +207,6 @@ class Dunzo_Create_Task_Object():
         result_flag = False
         if price is not None:
             result_flag = True
-            #print("The shipment price is: ",price)
             self.conditional_write(result_flag,
             positive='The expected shipment price is: %d'%price,
             negative='Failed to get the shipment price',
