@@ -90,7 +90,7 @@ if __name__=='__main__':
         #Setup and register a driver
         test_obj.register_driver(options.remote_flag,options.os_name,options.os_version,options.browser,options.browser_version,options.remote_project_name,options.remote_build_name)
 
-        test_dunzo_task(test_obj)
+        test_dunzo_options(test_obj)
                 
         #teardowm
         test_obj.wait(3)
