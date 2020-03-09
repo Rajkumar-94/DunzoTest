@@ -14,7 +14,6 @@ import pytest
 
 @pytest.mark.GUI
 def test_dunzo_partner(test_obj):
-
     "Run the test"
     try:
         #Initalize flags for tests summary
@@ -23,6 +22,9 @@ def test_dunzo_partner(test_obj):
     
         # Turn on the highlighting feature
         test_obj.turn_on_highlight()
+
+        #Set start_time with current time
+        start_time = int(time.time())
 
         #1. Create a test object and fill the Dunzo partner sign up form
         test_obj = PageFactory.get_page_object("dunzo main page")
@@ -33,6 +35,7 @@ def test_dunzo_partner(test_obj):
                             positive="Successfully clicked on Dunzo for Partners\n",
                             negative="Failed to click on Dunzo for Partners \nOn url: %s"%test_obj.get_current_url(),
                             level="critical") 
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
 
         #2. Click on sign me up
         result_flag = test_obj.click_sign_up()
@@ -40,6 +43,7 @@ def test_dunzo_partner(test_obj):
                             positive="Successfully clicked on Sign me up\n",
                             negative="Failed to click on Sign me up\nOn url: %s"%test_obj.get_current_url(),
                             level="critical") 
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
 
         #3. Get the test details from the conf file
         name = partner_conf.name
@@ -52,6 +56,7 @@ def test_dunzo_partner(test_obj):
                             positive="Successfully submitted the form\n",
                             negative="Failed to submit the form \nOn url: %s"%test_obj.get_current_url(),
                             level="critical")
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
 
         #5. Verify if it has prompted the message
         result_flag = test_obj.check_phone_num_alert_msg()
@@ -59,6 +64,7 @@ def test_dunzo_partner(test_obj):
                             positive="Successfully prompted to enter valid phone number\n",
                             negative="Failed to prompt to enter valid phone number \nOn url: %s"%test_obj.get_current_url(),
                             level="critical")
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
 
         #6. Print out the result
         test_obj.write_test_summary()
@@ -70,7 +76,6 @@ def test_dunzo_partner(test_obj):
         print("Python says:%s"%str(e))
     
     assert expected_pass == actual_pass, "Test failed: %s"%__file__
-
 
     #---START OF SCRIPT   
 if __name__=='__main__':
@@ -85,7 +90,6 @@ if __name__=='__main__':
 
         #Setup and register a driver
         test_obj.register_driver(options.remote_flag,options.os_name,options.os_version,options.browser,options.browser_version,options.remote_project_name,options.remote_build_name)
-
         test_dunzo_partner(test_obj)
                 
         #teardowm

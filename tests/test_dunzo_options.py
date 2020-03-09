@@ -15,7 +15,6 @@ import pytest
 
 @pytest.mark.GUI
 def test_dunzo_options(test_obj):
-
     "Run the test"
     try:
         #Initalize flags for tests summary
@@ -28,12 +27,16 @@ def test_dunzo_options(test_obj):
         #1. Create a test object.
         test_obj = PageFactory.get_page_object("dunzo main page") 
 
+        #Set start_time with current time
+        start_time = int(time.time())
+
         #2. Click on Restaurant option on the home page
         result_flag = test_obj.click_restaurant()
         test_obj.log_result(result_flag,
                             positive="Successfully clicked on Restaurant\n",
                             negative="Failed to click on Restaurant \nOn url: %s"%test_obj.get_current_url(),
                             level="critical")
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
 
         #3. Check whether alert message is saying to select a location before proceeding
         if result_flag is True:
@@ -41,7 +44,8 @@ def test_dunzo_options(test_obj):
         test_obj.log_result(result_flag,
                             positive="Select location message appeared when clicked on Restaurant!\n",
                             negative="Fail: Select location message message did not appear when clicked on Restaurant!")
-        
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
+
         #4. Select location to click on any options like restaurant/grocery etc..
         if result_flag is True:
             result_flag = test_obj.click_location()
@@ -49,6 +53,7 @@ def test_dunzo_options(test_obj):
                             positive="Successfully clicked on Bangalore location\n",
                             negative="Failed to click on Bangalore location \nOn url: %s"%test_obj.get_current_url(),
                             level="critical")
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
 
         #5. Click on Restaurant option for the given location
         result_flag = test_obj.click_restaurant()
@@ -56,6 +61,7 @@ def test_dunzo_options(test_obj):
                             positive="Successfully clicked on Restaurant\n",
                             negative="Failed to click on Restaurant \nOn url: %s"%test_obj.get_current_url(),
                             level="critical")
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
 
         #6. Check if it is navigated to Restaurants page for the given location
         result_flag = test_obj.check_restaurants()
@@ -63,7 +69,8 @@ def test_dunzo_options(test_obj):
                             positive="Successfully switched to Bangalore Restaurants page\n",
                             negative="Failed to switch to Bangalore Restaurant page \nOn url: %s"%test_obj.get_current_url(),
                             level="critical")
-
+        test_obj.write('Script duration: %d seconds\n'%(int(time.time()-start_time)))
+        
         #7. Print out the result
         test_obj.write_test_summary()
         expected_pass = test_obj.result_counter
@@ -74,7 +81,6 @@ def test_dunzo_options(test_obj):
         print("Python says:%s"%str(e))
     
     assert expected_pass == actual_pass, "Test failed: %s"%__file__
-
 
     #---START OF SCRIPT   
 if __name__=='__main__':
@@ -89,7 +95,6 @@ if __name__=='__main__':
 
         #Setup and register a driver
         test_obj.register_driver(options.remote_flag,options.os_name,options.os_version,options.browser,options.browser_version,options.remote_project_name,options.remote_build_name)
-
         test_dunzo_options(test_obj)
                 
         #teardowm
