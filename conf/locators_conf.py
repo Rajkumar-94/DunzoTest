@@ -13,29 +13,24 @@
 ###########################################
 
 # Locators for create task object
-popup_close= "xpath,//i[contains(@class,'sc-3wfzb0-0 sc-13gg6g2-2 cSxoYv')]"
+popup_close= "xpath,//i[contains(@class,'cSxoYv')]"
 create_task = "xpath,//button[contains(text(),'Create a Task')]"
 
-# Locators to set pick up address
+# Locators to set pick up and drop address
 pick_up_click= "xpath,//p[contains(text(),'Search pickup location')]"
-partial_address = "xpath,//input[@id='places-autocomplete']"
-area_location = "xpath,//div[@class='sc-bdVaJa sc-bwzfXH eejohd-0 ccewWU']"
-flat_number = "xpath,//input[@name='apartmentAddress']"
-pick_adress_continue_button= "xpath,//button[contains(text(),'Continue')]"
-
-# Locators to set drop address
 drop_click = "xpath,//p[contains(text(),'Search drop location')]"
-partial_drop_address = "//xpath,input[@id='places-autocomplete']"
-drop_area_location = "xpath,//div[@class='sc-bdVaJa sc-bwzfXH eejohd-0 ccewWU']"
-drop_flat_number = "xpath,//input[@name='apartmentAddress']"
-drop_adress_continue_button= "xpath,//button[contains(text(),'Continue')]"
+
+partial_address = "xpath,//input[@id='places-autocomplete']"
+area_location = "xpath,//div[contains(@class,'ccewWU')]"
+flat_number = "xpath,//input[@name='apartmentAddress']"
+continue_button= "xpath,//button[contains(text(),'Continue')]"
 
 # Locator to fetch the expected shipping amount
-amount_to_pay= "xpath,//div[contains(@class,'sc-bdVaJa sc-bwzfXH bbMAot')]/div/p/font"
+amount_to_pay= "xpath,//div[contains(@class,'bbMAot')]/div/p/descendant::font"
 
 # Locators for options in home page
 restaurant = "xpath,//p[contains(text(),'Restaurants')]"
-alert_message = "xpath,//p[contains(text(),'Please select a location before proceeding.')]"
+alert_message = "xpath,//p[contains(text(),'Please select a location')]"
 bangalore_location = "xpath,//a[contains(text(),'Bangalore')]"
 bangalore_restaurants = "xpath,//h1[contains(text(),'Restaurants in')]"
 
