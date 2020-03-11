@@ -15,7 +15,7 @@ Our automated test will do the following:
     #12. Validates business page logo
     #13. Checks whether all elemensts are present in business page
     #14. Validates business page footer section and redirectes to home page
-
+    
 """
 import os,sys,time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
