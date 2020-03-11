@@ -14,6 +14,8 @@ from page_objects.zero_mobile_page import Zero_Mobile_Page
 from page_objects.zero_page import Zero_Page
 from page_objects.dunzo_main_page import Dunzo_Main_Page
 from page_objects.dunzo_category_order_page import Dunzo_Category_Order_Page
+from page_objects.dunzo_partner_page import Dunzo_Partner_Page
+from page_objects.dunzo_business_page import Dunzo_Business_Page
 
 import conf.base_url_conf
 
@@ -32,6 +34,10 @@ class PageFactory():
             test_obj = Dunzo_Main_Page(base_url=base_url)
         elif page_name == "dunzo category order page":
             test_obj = Dunzo_Category_Order_Page(base_url=base_url)
+        elif page_name == "partner page":
+            test_obj = Dunzo_Partner_Page(base_url=base_url)
+        elif page_name == "business page":
+            test_obj = Dunzo_Business_Page(base_url=base_url)
         return test_obj
 
     get_page_object = staticmethod(get_page_object)
