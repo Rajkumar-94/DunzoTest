@@ -28,7 +28,6 @@ class Dunzo_Create_Task_Object():
         "Close the popup if present  on the main page"
         if self.check_element_present(self.popup_close):
             self.click_element(self.popup_close)
-
         "Click on Create task button"
         result_flag = self.click_element(self.create_task_button)
         self.conditional_write(result_flag,
@@ -43,7 +42,6 @@ class Dunzo_Create_Task_Object():
     def check_redirect(self):
         "Check if redirected to the send package page"
         result_flag = False
-
         if self.redirect_title in self.driver.title:
             result_flag = True
             self.switch_page("dunzo category order page")
@@ -54,7 +52,6 @@ class Dunzo_Create_Task_Object():
     @Wrapit._screenshot
     def click_on_pick_up_address(self):
         "Click on 'Create pick up address"
-
         result_flag = self.click_element(self.pick_up_click)
         self.conditional_write(result_flag,
             positive='Clicked on the "pick up address" button',

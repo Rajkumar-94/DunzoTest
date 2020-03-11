@@ -11,26 +11,68 @@ class Dunzo_Partner_Object():
     "Page object for partner page"
 
     #locators
-    click_partner_button = locators.partner_button
-    sign_up_click = locators.sign_me_up
+    sign_up = locators.sign_me_up
     name_field = locators.name_field
     city_field = locators.city_field
     number_field = locators.number_field
     submit_button = locators.submit_button
     enter_valid_num_message = locators.phone_number_message
-    
+    partner_specification = locators.partner_specification
+    partner_feedback = locators.partner_feedback
+    partner_sign_up_form = locators.partner_sign_up_form
+
+    @Wrapit._exceptionHandler
+    def check_sign_up_button(self):
+        "Check whether sign me up button is present"
+        result_flag =  self.check_element_displayed(self.sign_up)
+        self.conditional_write(result_flag,
+            positive='Sign up button is present in the Partner page',
+            negative='Failed to detect Sign up button in the Partner page',
+            level='debug')
+
+        return result_flag
+
+    @Wrapit._exceptionHandler
+    def check_partner_specification(self):
+        "Check whether partner specification is present"
+        result_flag =  self.check_element_displayed(self.partner_specification)
+        self.conditional_write(result_flag,
+            positive='Partner specification is present in the Partner page',
+            negative='Failed to detect Partner specification in the Partner page',
+            level='debug')
+
+        return result_flag
+
+    @Wrapit._exceptionHandler
+    def check_partner_feedback(self):
+        "Check whether partner feedback is present"
+        result_flag =  self.check_element_displayed(self.partner_feedback)
+        self.conditional_write(result_flag,
+            positive='Partner feedback is present in the Partner page',
+            negative='Failed to detect Partner feedback in the Partner page',
+            level='debug')
+
+        return result_flag
+
+    @Wrapit._exceptionHandler
+    def check_partner_sign_up_form(self):
+        "Check whether Partner sign-up form is present"
+        result_flag =  self.check_element_displayed(self.partner_sign_up_form)
+        self.conditional_write(result_flag,
+            positive='Partner sign-up form is present in the Partner page',
+            negative='Failed to detect Partner sign-up form in the Partner page',
+            level='debug')
+
+        return result_flag
+
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def click_partners(self):
-        "Close the popup if present  on the main page"
-        if self.check_element_present(self.popup_close):
-            self.click_element(self.popup_close)
-        "Click on Dunzo partner button"
-        result_flag = self.click_element(self.click_partner_button)
-        self.conditional_write(result_flag,
-            positive='Clicked on the Dunzo partner button',
-            negative='Failed to click on Dunzo partner button',
-            level='debug')
+    def check_partner_page_elements(self):
+        "Check's all Partner page web elements"
+        result_flag = self.check_sign_up_button()
+        result_flag &= self.check_partner_specification()
+        result_flag &= self.check_partner_feedback()
+        result_flag &= self.check_partner_sign_up_form()
 
         return result_flag
 
@@ -38,7 +80,7 @@ class Dunzo_Partner_Object():
     @Wrapit._screenshot
     def click_sign_up(self):
         "Click on Sign me up"
-        result_flag = self.click_element(self.sign_up_click)
+        result_flag = self.click_element(self.sign_up)
         self.conditional_write(result_flag,
             positive='Clicked on Sign me up',
             negative='Failed to click on Sign me up',
@@ -49,7 +91,6 @@ class Dunzo_Partner_Object():
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def set_name(self,name):
-        time.sleep(3)
         "Set the name on the form sign up form"
         result_flag = self.set_text(self.name_field,name)
         self.conditional_write(result_flag,
@@ -62,7 +103,6 @@ class Dunzo_Partner_Object():
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def set_city(self,city):
-        time.sleep(3)
         "Set the city on the form sign up form"
         result_flag = self.set_text(self.city_field,city)
         self.conditional_write(result_flag,
@@ -75,7 +115,6 @@ class Dunzo_Partner_Object():
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def set_number(self,number):
-        time.sleep(3)
         "Set the number on the form sign up form"
         result_flag = self.set_text(self.number_field,number)
         self.conditional_write(result_flag,
@@ -89,9 +128,8 @@ class Dunzo_Partner_Object():
     @Wrapit._screenshot
     def click_on_submit(self):
         "Click on submit button"
-        
         result_flag = self.click_element(self.submit_button)
-        time.sleep(5)
+        #time.sleep(5)
         self.conditional_write(result_flag,
             positive='Clicked on the Submit button',
             negative='Failed to click on Submit button',
@@ -120,3 +158,4 @@ class Dunzo_Partner_Object():
             level='debug')
 
         return result_flag
+

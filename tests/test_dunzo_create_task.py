@@ -13,7 +13,6 @@ from utils.Option_Parser import Option_Parser
 import conf.dunzo_address_conf as dunzo_address
 import pytest
 
-
 @pytest.mark.GUI
 def test_dunzo_task(test_obj):
     "Run the test"
