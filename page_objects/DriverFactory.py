@@ -44,7 +44,6 @@ class DriverFactory():
         else:
             print("DriverFactory does not know the browser: ",browser)
             web_driver = None
-        print("The webDriver is in line 46 driver factory",web_driver)
         return web_driver   
     
 
@@ -107,7 +106,8 @@ class DriverFactory():
             local_driver = webdriver.Ie()
         elif browser.lower() == "chrome":
             options = Options()
-            options.headless = True
+            options.add_argument("--headless")
+            options.add_argument("window-size=1400,1500")
             local_driver = webdriver.Chrome(options)
         elif browser.lower() == "opera":
             opera_options = None
