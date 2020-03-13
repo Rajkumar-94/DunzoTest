@@ -14,7 +14,6 @@ from selenium.webdriver.remote.webdriver import RemoteConnection
 from appium import webdriver as mobile_webdriver
 from conf import remote_credentials
 from conf import opera_browser_conf
-from selenium.webdriver.chrome.options import Options
 
 class DriverFactory():
     
