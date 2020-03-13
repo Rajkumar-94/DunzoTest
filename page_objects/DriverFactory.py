@@ -105,10 +105,7 @@ class DriverFactory():
         elif  browser.lower() == "ie":
             local_driver = webdriver.Ie()
         elif browser.lower() == "chrome":
-            options = Options()
-            options.add_argument("--headless")
-            options.add_argument("window-size=1400,1500")
-            local_driver = webdriver.Chrome(options)
+            local_driver = webdriver.Chrome()
         elif browser.lower() == "opera":
             opera_options = None
             try:
