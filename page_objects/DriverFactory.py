@@ -14,6 +14,7 @@ from selenium.webdriver.remote.webdriver import RemoteConnection
 from appium import webdriver as mobile_webdriver
 from conf import remote_credentials
 from conf import opera_browser_conf
+from selenium.webdriver.chrome.options import Options
 
 class DriverFactory():
     
@@ -43,7 +44,7 @@ class DriverFactory():
         else:
             print("DriverFactory does not know the browser: ",browser)
             web_driver = None
-
+        print("The webDriver is in line 46 driver factory",web_driver)
         return web_driver   
     
 
@@ -105,7 +106,9 @@ class DriverFactory():
         elif  browser.lower() == "ie":
             local_driver = webdriver.Ie()
         elif browser.lower() == "chrome":
-            local_driver = webdriver.Chrome()
+            options = Options()
+            options.headless = True
+            local_driver = webdriver.Chrome(options)
         elif browser.lower() == "opera":
             opera_options = None
             try:
