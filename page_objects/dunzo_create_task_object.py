@@ -14,15 +14,11 @@ class Dunzo_Create_Task_Object():
     popup_close = locators.popup_close
     create_task_button = locators.create_task
     pick_up_click = locators.pick_up_click
+    drop_click = locators.drop_click
     address = locators.partial_address
     area_loc = locators.area_location
     flat_num = locators.flat_number
-    pick_continue = locators.pick_adress_continue_button
-    drop_click = locators.drop_click
-    partial_drop_address = locators.partial_drop_address
-    drop_area_loc = locators.drop_area_location
-    drop_flat_num = locators.drop_flat_number
-    drop_continue = locators.drop_adress_continue_button
+    continue_button = locators.continue_button
     amount_to_pay = locators.amount_to_pay
     redirect_title = "Category Order"
 
@@ -32,7 +28,6 @@ class Dunzo_Create_Task_Object():
         "Close the popup if present  on the main page"
         if self.check_element_present(self.popup_close):
             self.click_element(self.popup_close)
-
         "Click on Create task button"
         result_flag = self.click_element(self.create_task_button)
         self.conditional_write(result_flag,
@@ -47,7 +42,6 @@ class Dunzo_Create_Task_Object():
     def check_redirect(self):
         "Check if redirected to the send package page"
         result_flag = False
-
         if self.redirect_title in self.driver.title:
             result_flag = True
             self.switch_page("dunzo category order page")
@@ -58,7 +52,6 @@ class Dunzo_Create_Task_Object():
     @Wrapit._screenshot
     def click_on_pick_up_address(self):
         "Click on 'Create pick up address"
-
         result_flag = self.click_element(self.pick_up_click)
         self.conditional_write(result_flag,
             positive='Clicked on the "pick up address" button',
@@ -93,11 +86,11 @@ class Dunzo_Create_Task_Object():
 
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def set_flat_num(self,house_num):
+    def set_flat_num(self,pick_up_flat_num):
         "Set the pick up house number"
-        result_flag = self.set_text(self.flat_num,house_num)
+        result_flag = self.set_text(self.flat_num ,pick_up_flat_num)
         self.conditional_write(result_flag,
-            positive='Set the pick up house number to: %s'%house_num,
+            positive='Set the pick up house number to: %s'%pick_up_flat_num,
             negative='Failed to set the house number in the form',
             level='debug')
 
@@ -107,7 +100,7 @@ class Dunzo_Create_Task_Object():
     @Wrapit._screenshot
     def click_continue(self):
         "Click on continue after pick up address is set"
-        result_flag = self.click_element(self.pick_continue)
+        result_flag = self.click_element(self.continue_button)
         self.conditional_write(result_flag,
             positive='Clicked on the "continue" while filling the pick up address',
             negative='Failed to click on "continue" while filling the pick up address',
@@ -117,12 +110,12 @@ class Dunzo_Create_Task_Object():
         
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def set_pick_up_address(self,pick_address,house_num):
+    def set_pick_up_address(self,pick_address,pick_up_flat_num):
         "Set the pick up address at once"
         result_flag = self.click_on_pick_up_address()
         result_flag &= self.set_partial_address(pick_address)
         result_flag &= self.click_area_location()
-        result_flag &= self.set_flat_num(house_num)
+        result_flag &= self.set_flat_num(pick_up_flat_num)
         result_flag &= self.click_continue()
         return result_flag   
 
@@ -154,7 +147,7 @@ class Dunzo_Create_Task_Object():
     @Wrapit._screenshot
     def click_drop_area_location(self):
         "Click on the given location"
-        result_flag = self.click_element(self.drop_area_loc)
+        result_flag = self.click_element(self.area_loc)
         self.conditional_write(result_flag,
             positive='Clicked on the "pick up area" button',
             negative='Failed to click on "pick up area" button',
@@ -164,11 +157,11 @@ class Dunzo_Create_Task_Object():
 
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def set_drop_flat_num(self,house_num2):
+    def set_drop_flat_num(self,drop_flat_num):
         "Set the drop house number"
-        result_flag = self.set_text(self.flat_num,house_num2)
+        result_flag = self.set_text(self.flat_num ,drop_flat_num)
         self.conditional_write(result_flag,
-            positive='Set the drop house number to: %s'%house_num2,
+            positive='Set the drop house number to: %s'%drop_flat_num,
             negative='Failed to set the drop house number in the form',
             level='debug')
             
@@ -178,7 +171,7 @@ class Dunzo_Create_Task_Object():
     @Wrapit._screenshot
     def drop_click_continue(self):
         "Click on continue after drop address is set"
-        result_flag = self.click_element(self.drop_continue)
+        result_flag = self.click_element(self.continue_button)
         self.conditional_write(result_flag,
             positive='Clicked on the "continue" while filling the drop address',
             negative='Failed to click on "continue" while filling the drop address',
@@ -188,12 +181,12 @@ class Dunzo_Create_Task_Object():
         
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def set_drop_address(self,drop_address,house_num2):
+    def set_drop_address(self,drop_address,drop_flat_num):
         "Set the drop address at once"
         result_flag = self.click_on_drop_address()
         result_flag &= self.set_partial_drop_address(drop_address)
         result_flag &= self.click_drop_area_location()
-        result_flag &= self.set_drop_flat_num(house_num2)
+        result_flag &= self.set_drop_flat_num(drop_flat_num)
         result_flag &= self.drop_click_continue()
 
         return result_flag 

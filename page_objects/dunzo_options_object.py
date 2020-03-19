@@ -23,7 +23,6 @@ class Dunzo_Options_Object():
         "Close the popup if present  on the main page"
         if self.check_element_present(self.popup_close):
             self.click_element(self.popup_close) 
-
         "Click on Restaurant_option"
         result_flag = self.click_element(self.restaurant_option)
         self.conditional_write(result_flag,

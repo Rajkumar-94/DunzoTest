@@ -70,9 +70,9 @@ a) Get setup with your browser driver. If you don't know how to, please try:
 
 __If your setup goes well__, you should be to run a simple test with this command:
 
-1. Chrome: `python -m pytest -k example_form -B Chrome` 
+1. Chrome: `python -m pytest -k create_task -B Chrome` 
 
-2. Firefox: `python -m pytest -k example_form -B Firefox`
+2. Firefox: `python -m pytest -k create_task -B Firefox`
 
 __Optional steps__ for integrating with third-party tools: 
 
@@ -150,14 +150,10 @@ a)py.test [options]
 	-n 	used to run tests in parallel					E.g: python -m pytest -n 3 -v (This will run three tests in parallel)
 	--tesults 	used to report test results to tesults			E.g: python -m pytest test_example_form.py --tesults Y(This will report test report to tesults)
 
-b)python tests/test_example_form.py (can also be used to run standalone test) 	
+b)python tests/test_dunzo_create_task.py (can also be used to run standalone test) 	
 
-c)python tests/test_example_form.py -B Chrome (to run against chrome)
+c)python tests/test_dunzo_create_task.py -B Chrome (to run against chrome)
 
-d)python tests/test_api_example.py (make sure to run sample cars-api available at qxf2/cars-api repository before api test run)
-
-e)python tests/test_mobile_bitcoin_price -H (android version) -I (simulator) -N (.apk location on local) -M Y (to run Mobile test case on Broswestack)remote_credentials.py
-NOTE: For running tests in Browserstack, need to update Username/Accesskey from Browserstack Account to remote_credentials.py under conf.
 
 --------
 ISSUES?
@@ -176,7 +172,7 @@ Continuous Integration and Support
 -----------
 This project uses: 
 <a href="https://www.browserstack.com/">
-<img src="https://p14.zdusercontent.com/attachment/1015988/RUZZUUKzGhuHBgaH1BgsNphKC?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..7bLPNjjta-dLrqlsvUmhUQ.jHmAf1fOKtNU7OLR2E4sN-aAPdG_8li2sAocs7K1ObIOqP_HKFqHbYxs8QD73dzllq3KB7oIfFO6uzJCQd5sMvwgZg9M7UGmVYa4BEMHTuvQZEW0XD4PH4u5E20mttL77LftfVRn6WL6fdNqbWFc7QxXloWtUriLWZXYbEgOkp1npIaTfTYYy0gLlrF0HTDp0shMBtFsKlbPk3mMQT24MXteAK0WGcAZZUrMYyEqThwvL1BLCZKIqoq-yEBvyG6EZ_97O3fq5LXf2PAmtfNy3Rf7zoSgf-SCCq7JSpdYXJ0.ourdU_U4Z0rK9xFZTW9HNQ" width="150" height="100" hspace="10"></a>
+<img src="https://www.selenium.dev/images/sponsors/browserstack.png" width="150" height="100" hspace="10"></a>
 <a href="https://circleci.com/"><img src="https://github.com/circleci/media/blob/master/logo/build/horizontal_dark.1.png?raw=true" width="150" height="100" hspace="10"></a>
 
 

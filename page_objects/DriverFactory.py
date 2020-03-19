@@ -43,7 +43,6 @@ class DriverFactory():
         else:
             print("DriverFactory does not know the browser: ",browser)
             web_driver = None
-
         return web_driver   
     
 
