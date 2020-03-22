@@ -23,7 +23,7 @@ def test_dunzo_options(test_obj):
         actual_pass = -1
     
         # Turn on the highlighting feature
-        test_obj.turn_on_highlight()
+        #test_obj.turn_on_highlight()
 
         #1. Create a test object.
         test_obj = PageFactory.get_page_object("dunzo main page") 

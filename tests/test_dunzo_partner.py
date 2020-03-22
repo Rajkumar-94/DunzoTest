@@ -22,7 +22,7 @@ def test_dunzo_partner(test_obj):
         actual_pass = -1
     
         # Turn on the highlighting feature
-        test_obj.turn_on_highlight()
+        #test_obj.turn_on_highlight()
 
         #1. Create a test object and fill the Dunzo partner sign up form
         test_obj = PageFactory.get_page_object("dunzo main page")
@@ -84,6 +84,7 @@ if __name__=='__main__':
         test_obj = PageFactory.get_page_object("Zero",base_url=options.url)
 
         #Setup and register a driver
+
         test_obj.register_driver(options.remote_flag,options.os_name,options.os_version,options.browser,options.browser_version,options.remote_project_name,options.remote_build_name)
 
         test_dunzo_partner(test_obj)
